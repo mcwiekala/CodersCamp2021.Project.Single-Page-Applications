@@ -51,6 +51,5 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "parcel": "^2.2.1",
     "prettier": "^2.5.1"
-  },
-  "prettier": "@imaginary-cloud/prettier-config"
+  }
 }
