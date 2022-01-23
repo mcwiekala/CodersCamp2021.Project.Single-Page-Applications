@@ -13,11 +13,13 @@
   "scripts": {
     "start": "npx parcel ./public/index.html",
     "build": "npx parcel build ./public/index.html --public-url ./",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "eslint": "eslint src/*.js",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.+(html|json|css|md)\""
+    "format": "prettier --write \"**/*.+(html|json|css|md)\"",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +44,7 @@
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.0",
     "parcel": "^2.2.1",
     "prettier": "^2.5.1"
   }
