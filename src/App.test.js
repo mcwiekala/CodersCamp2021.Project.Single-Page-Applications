@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+/* eslint-disable */
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import { shallow, configure } from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import App from "./App";
+import React from "react";
+
+configure({ adapter: new Adapter() });
+it("renders without crashing", () => {
+  const element = shallow(<App />);
+  expect(element.text()).toEqual(
+    "Edit src/App.js and save to reload.Learn React"
+  );
 });
