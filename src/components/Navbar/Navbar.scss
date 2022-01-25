@@ -1,0 +1,151 @@
+.NavbarItem {
+  background: linear-gradient(90deg, rgb(8, 8, 8) 0%, rgb(77, 77, 77) 100%);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-logo {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: default;
+  transition: all 1s ease-in-out;
+}
+
+.nav-menu {
+  text-align: center;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-gap: 10px;
+  width: 70vw;
+  justify-content: end;
+  margin-right: 2rem;
+}
+
+.nav-links {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links:hover {
+  background-color: rgb(129, 37, 182);
+  border-radius: 2px;
+  transition: all 0.2s ease-out;
+}
+
+.nav-links-mobile {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+}
+
+.icons {
+  color: #fff;
+  margin-left: 0.5rem;
+  font-size: 1.6rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .NavbarItem {
+    position: relative;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0px;
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: rgb(129, 37, 182);
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-links {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: block;
+    color: whitesmoke;
+    font-size: 1.5rem;
+  }
+
+  .nav-links:hover {
+    background-color: rgb(169, 64, 230);
+    border-radius: 0;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.4) translate(20%, 20%);
+    transition: all 1s ease-in-out;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a.nav-links {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-links-mobile {
+    display: block;
+    text-align: center;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    border: 4px;
+    width: 40%;
+    background: rgb(0, 255, 255);
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 1.5rem;
+  }
+
+  .nav-links-mobile:hover {
+    background-color: whitesmoke;
+    color: rgb(169, 64, 230);
+    transition: 250ms;
+  }
+
+  Button {
+    display: none;
+  }
+}
