@@ -1,8 +1,12 @@
 import React from "react";
 import logo from "./images/logo512.png";
 import "./App.scss";
+import init from "./firebase/addData";
+import getDataFromFirebase from "./firebase/getData";
 
 function App() {
+  init();
+  getDataFromFirebase();
   return (
     <div className="App">
       <header className="App-header">
