@@ -1,37 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
+import moviesData from "./movies_data.json";
 
 function MovieBrowser() {
   const [movies, setMovies] = useState([]);
 
-  const getData = () => {
-    fetch("http://localhost:3000/movies", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (fetchData) {
-        console.log(fetchData);
-        setMovies(fetchData);
-      });
-  };
-
   useEffect(() => {
-    getData();
+    setMovies(moviesData.movies);
   }, []);
 
   return (
     <div>
       <h1>Repertuar</h1>
       {movies.map((movie) => (
-        <div key={movie.Title}>
-          <img src={movie.Poster} alt="" />
-          <h1 className="user">{movie.Title}</h1>
-        </div>
+        <Movie
+          key={movie.imdbID}
+          title={movie.Title}
+          genre={movie.Genre}
+          plot={movie.Plot}
+          poster={movie.Poster}
+          rated={movie.Rated}
+          runtime={movie.Runtime}
+          rating={movie.imdbRating}
+          votes={movie.imdbVotes}
+        ></Movie>
       ))}
     </div>
   );
