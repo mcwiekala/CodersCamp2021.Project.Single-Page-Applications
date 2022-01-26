@@ -3,15 +3,22 @@ import "./style/Movie.scss";
 
 function Movie(props) {
   return (
-    <div>
-      <img src={props.poster} alt="" />
-      <h1 className="user">{props.title}</h1>
-      <h2>
-        {props.genre} | {props.rated} | {props.runtime}
-      </h2>
-      <p>{props.plot}</p>
-      <div>
-        {props.rating} | {props.votes}
+    <div className="movie-wrapper">
+      <div className="poster">
+        <img src={props.poster} alt="" />
+      </div>
+      <div className="movie-details">
+        <h1>{props.title}</h1>
+        <h4>
+          {props.genre} | {props.rated} | {props.runtime}
+        </h4>
+        <p>{props.plot}</p>
+      </div>
+      <div className="movie-ratings">
+        <div className="rating">{props.rating}</div>
+        <h4>Average rating</h4>
+        <div className="votes">{props.votes}</div>
+        <h4>Votes</h4>
       </div>
     </div>
   );
