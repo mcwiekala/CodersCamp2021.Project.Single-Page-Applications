@@ -23,7 +23,7 @@ function MovieBrowser() {
           runtime={movie.Runtime}
           rating={movie.imdbRating}
           votes={movie.imdbVotes}
-        ></Movie>
+        />
       ))}
     </div>
   );
