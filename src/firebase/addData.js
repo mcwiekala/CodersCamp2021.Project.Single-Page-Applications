@@ -12,9 +12,9 @@ const init = async () => {
       halls: 3,
       addres: "ul. Prosta 15",
     });
-    console.log("Document written with ID: ", docRef.id);
+    console.log(`Zapisano lokalizacje kina z ID: ${docRef.id}`);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error(`Błąd przy zapisie kina: ${e}`);
   }
 
   try {
@@ -23,9 +23,9 @@ const init = async () => {
       halls: 5,
       addres: "ul. Długa 32",
     });
-    console.log("Document written with ID: ", docRef.id);
+    console.log(`Zapisano lokalizacje kina z ID: ${docRef.id}`);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error(`Błąd przy zapisie kina: ${e}`);
   }
 
   try {
@@ -34,9 +34,9 @@ const init = async () => {
       halls: 11,
       addres: "ul. Krzywa 15",
     });
-    console.log("Document written with ID: ", docRef.id);
+    console.log(`Zapisano lokalizacje kina z ID: ${docRef.id}`);
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error(`Błąd przy zapisie kina: ${e}`);
   }
 };
 
