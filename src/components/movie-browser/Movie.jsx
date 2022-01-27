@@ -15,10 +15,10 @@ function Movie({ title, genre, plot, poster, rated, runtime, rating, votes }) {
         </h4>
         <p>{plot}</p>
       </div>
-      <div className="movie-ratings">
-        <div className="rating">{rating}</div>
+      <div className="movie-report">
+        <div className="movie-report__rating">{rating}</div>
         <h4>Average rating</h4>
-        <div className="votes">{votes}</div>
+        <div className="movie-report__votes">{votes}</div>
         <h4>Votes</h4>
       </div>
     </div>

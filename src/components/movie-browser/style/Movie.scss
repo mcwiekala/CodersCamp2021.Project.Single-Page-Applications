@@ -42,14 +42,14 @@ $greyText: rgba(255, 255, 255, 0.5);
   }
 }
 
-.movie-ratings {
+.movie-report {
   display: flex;
   flex-direction: column;
   letter-spacing: 0.1em;
   padding: 10px;
   margin-left: 85px;
 
-  .rating {
+  .movie-report__rating {
     color: $ratingsColor;
     font-weight: 300;
     font-size: 32px;
@@ -62,7 +62,7 @@ $greyText: rgba(255, 255, 255, 0.5);
     margin-bottom: 50px;
   }
 
-  .votes {
+  .movie-report__votes {
     font-weight: 300;
     font-size: 25px;
     color: $greyText;
