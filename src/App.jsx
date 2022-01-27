@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./images/logo512.png";
 import "./App.scss";
-import updateMovie from "./firebase/addUpdateData";
+import updateMovie from "./firebase/updateData";
 
 function App() {
   updateMovie();
