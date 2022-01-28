@@ -1,39 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./style/Movie.scss";
 
-function Movie({ title, genre, plot, poster, rated, runtime, rating, votes }) {
+export default function Movie({
+  id,
+  title,
+  genre,
+  plot,
+  poster,
+  rated,
+  runtime,
+  rating,
+  votes,
+}) {
   return (
-    <div className="movie-wrapper">
-      <div className="poster">
-        <img src={poster} alt="" />
-      </div>
-      <div className="movie-details">
-        <h1>{title}</h1>
-        <h4>
-          {genre} | {rated} | {runtime}
-        </h4>
-        <p>{plot}</p>
-      </div>
-      <div className="movie-report">
-        <div className="movie-report__rating">{rating}</div>
-        <h4>Average rating</h4>
-        <div className="movie-report__votes">{votes}</div>
-        <h4>Votes</h4>
-      </div>
+    <div>
+      <Link to={`/movie/${id}`}>
+        <img src={poster} alt="poster" />
+      </Link>
+      <h1>{title}</h1>
+      <h3>
+        {genre} - {rated} - {runtime}
+      </h3>
+      <p>{plot}</p>
+      <p>Rating: {rating}</p>
+      <p>Votes: {votes}</p>
     </div>
   );
 }
 
 Movie.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  plot: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  rated: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
-  rating: PropTypes.string.isRequired,
-  votes: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  genre: PropTypes.string,
+  plot: PropTypes.string,
+  poster: PropTypes.string,
+  rated: PropTypes.string,
+  runtime: PropTypes.string,
+  rating: PropTypes.string,
+  votes: PropTypes.string,
 };
 
-export default Movie;
+Movie.defaultProps = {
+  title: "Movie title",
+  genre: "Genre",
+  plot: "Movie plot",
+  poster: "",
+  rated: "Movie Rating",
+  runtime: "Movie runtime",
+  rating: "Movie score",
+  votes: "Votes count",
+};

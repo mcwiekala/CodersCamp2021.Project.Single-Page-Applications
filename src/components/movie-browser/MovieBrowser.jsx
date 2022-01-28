@@ -2,31 +2,31 @@ import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import moviesData from "./movies_data.json";
 
-function MovieBrowser() {
+export default function MovieBrowser() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    // console.log(moviesData);
     setMovies(moviesData.movies);
   }, []);
 
   return (
     <div>
       <h1>Repertuar</h1>
-      {movies.map((movie) => (
+      {movies.map((item) => (
         <Movie
-          key={movie.imdbID}
-          title={movie.Title}
-          genre={movie.Genre}
-          plot={movie.Plot}
-          poster={movie.Poster}
-          rated={movie.Rated}
-          runtime={movie.Runtime}
-          rating={movie.imdbRating}
-          votes={movie.imdbVotes}
+          key={item.imdbID}
+          id={item.imdbID}
+          title={item.Title}
+          genre={item.Genre}
+          plot={item.Plot}
+          poster={item.Poster}
+          rated={item.Rated}
+          runtime={item.Runtime}
+          rating={item.imdbRating}
+          votes={item.imdbVotes}
         />
       ))}
     </div>
   );
 }
-
-export default MovieBrowser;

@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.scss";
-import MovieBrowser from "./components/movie-browser/MovieBrowser";
+import MoviesView from "./components/movie-browser/MoviesView";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <MovieBrowser></MovieBrowser>
+      <MoviesView />
     </div>
   );
 }
-
-export default App;
