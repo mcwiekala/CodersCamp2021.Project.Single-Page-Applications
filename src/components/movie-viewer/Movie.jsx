@@ -15,17 +15,25 @@ export default function Movie({
   votes,
 }) {
   return (
-    <div>
-      <Link to={`/movie/${id}`}>
-        <img src={poster} alt="poster" />
-      </Link>
-      <h1>{title}</h1>
-      <h3>
-        {genre} - {rated} - {runtime}
-      </h3>
-      <p>{plot}</p>
-      <p>Rating: {rating}</p>
-      <p>Votes: {votes}</p>
+    <div className="movie-wrapper">
+      <div className="poster">
+        <Link to={`/movie/${id}`}>
+          <img src={poster} alt="" />
+        </Link>
+      </div>
+      <div className="movie-details">
+        <h1>{title}</h1>
+        <h4>
+          {genre} | {rated} | {runtime}
+        </h4>
+        <p>{plot}</p>
+      </div>
+      <div className="movie-report">
+        <div className="movie-report__rating">{rating}</div>
+        <h4>Average rating</h4>
+        <div className="movie-report__votes">{votes}</div>
+        <h4>Votes</h4>
+      </div>
     </div>
   );
 }
