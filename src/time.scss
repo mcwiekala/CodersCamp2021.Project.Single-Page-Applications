@@ -1,0 +1,25 @@
+.time {
+  ul {
+    list-style: none;
+    display: flex;
+
+    li {
+      padding: 20px;
+      margin-right: 15px;
+      border: 2px solid #c8006d;
+      border-radius: 3px;
+      background: #000;
+      font-size: 32px;
+
+      &:hover {
+        background: linear-gradient(90deg, #c8006d, #7a0042);
+        background: -webkit-linear-gradient(left, #c8006d, #7a0042);
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
