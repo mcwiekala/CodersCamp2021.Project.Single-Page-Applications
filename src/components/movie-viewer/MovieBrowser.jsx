@@ -12,20 +12,22 @@ export default function MovieBrowser() {
 
   return (
     <div>
-      {movies.map((item) => (
-        <Movie
-          key={item.imdbID}
-          id={item.imdbID}
-          title={item.Title}
-          genre={item.Genre}
-          plot={item.Plot}
-          poster={item.Poster}
-          rated={item.Rated}
-          runtime={item.Runtime}
-          rating={item.imdbRating}
-          votes={item.imdbVotes}
-        />
-      ))}
+      <div className="movie-browser-wrapper">
+        {movies.map((item) => (
+          <Movie
+            key={item.imdbID}
+            id={item.imdbID}
+            title={item.Title}
+            genre={item.Genre}
+            plot={item.Plot}
+            poster={item.Poster}
+            rated={item.Rated}
+            runtime={item.Runtime}
+            rating={item.imdbRating}
+            votes={item.imdbVotes}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -32,7 +32,8 @@ export default function MovieDetails() {
           <div className="movie-content__title">
             <h1>{movie.Title}</h1>
             <h4>
-              {movie.Genre} | {movie.Rated} | {movie.Runtime}
+              {movie.Genre} | {movie.Rated === "R" ? "18+" : movie.Rated} |{" "}
+              {movie.Runtime}
             </h4>
             <p>{movie.Plot}</p>
           </div>
@@ -53,6 +54,10 @@ export default function MovieDetails() {
               <h4>Average rating:</h4>
               <div className="movie-facts__rating--score">
                 {movie.imdbRating}
+              </div>
+              <h4>Votes: </h4>
+              <div className="movie-facts__rating--votes">
+                {movie.imdbVotes}
               </div>
             </div>
           </div>

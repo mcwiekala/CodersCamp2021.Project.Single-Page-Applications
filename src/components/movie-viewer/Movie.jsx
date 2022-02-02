@@ -24,7 +24,7 @@ export default function Movie({
       <div className="movie-details">
         <h1>{title}</h1>
         <h4>
-          {genre} | {rated} | {runtime}
+          {genre} | {rated === "R" ? "18+" : rated} | {runtime}
         </h4>
         <p>{plot}</p>
       </div>
