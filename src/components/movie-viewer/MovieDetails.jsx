@@ -18,7 +18,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => null);
 

@@ -2,6 +2,10 @@ $textColor: #ffff;
 $ratingsColor: #be005e;
 $greyText: rgba(255, 255, 255, 0.5);
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: black;
 }
@@ -11,6 +15,7 @@ body {
   justify-content: center;
   color: $textColor;
   letter-spacing: 0.1em;
+  margin-top: 30px;
 
   .movie-details {
     display: flex;
