@@ -16,7 +16,7 @@ export default function Movie({
 }) {
   return (
     <div className="movie-wrapper">
-      <div className="poster">
+      <div className="movie__poster">
         <Link to={`/movie/${id}`}>
           <img src={poster} alt="" />
         </Link>
