@@ -1,0 +1,27 @@
+.movie-details-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .movie-details {
+    display: flex;
+    min-width: 900px;
+  }
+
+  .movie-details__poster {
+    img {
+      width: 150px;
+      height: auto;
+    }
+  }
+
+  .movie-content-wrapper {
+    h4 {
+      color: black;
+    }
+  }
+
+  .movie-facts-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
