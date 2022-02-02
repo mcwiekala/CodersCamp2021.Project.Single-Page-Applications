@@ -12,7 +12,6 @@ export default function MovieBrowser() {
 
   return (
     <div>
-      <h1>Repertuar</h1>
       {movies.map((item) => (
         <Movie
           key={item.imdbID}
