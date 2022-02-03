@@ -68,8 +68,7 @@ export default function Signup() {
         />
 
         <button type="button" onClick={register}>
-          {" "}
-          Create User{" "}
+          Create User
         </button>
       </div>
 
@@ -89,16 +88,14 @@ export default function Signup() {
         />
 
         <button type="button" onClick={login}>
-          {" "}
-          Login{" "}
+          Login
         </button>
       </div>
 
       <h4> User Logged In:</h4>
       {user?.email}
       <button type="button" onClick={logout}>
-        {" "}
-        Sign Out{" "}
+        Sign Out
       </button>
     </div>
   );
