@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.scss";
-import Navbar from './components/Navbar/Navbar';
 
-function App() {
+import Navbar from "./components/Navbar/Navbar";
+import MoviesView from "./components/movie-viewer/MoviesView";
+
+
+export default function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
+      <MoviesView />
     </div>
   );
 }
-
-export default App;
