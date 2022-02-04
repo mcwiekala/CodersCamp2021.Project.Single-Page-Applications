@@ -1,0 +1,70 @@
+$textColor: #ffff;
+$ratingsColor: #be005e;
+$greyText: rgba(255, 255, 255, 0.5);
+
+.movie-wrapper {
+  display: flex;
+  background-color: black;
+}
+
+.poster {
+  img {
+    width: 175px;
+    height: auto;
+    padding: 20px;
+  }
+}
+
+.movie-details {
+  width: 50%;
+  letter-spacing: 0.1em;
+  text-align: left;
+  margin-left: 30px;
+
+  > h1 {
+    font-weight: 400;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $textColor;
+  }
+
+  h4 {
+    font-weight: 400;
+    font-size: 16px;
+    color: $greyText;
+  }
+
+  > p {
+    font-weight: 400;
+    font-size: 16px;
+    color: $textColor;
+    margin-top: 50px;
+  }
+}
+
+.movie-report {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.1em;
+  padding: 10px;
+  margin-left: 85px;
+
+  .movie-report__rating {
+    color: $ratingsColor;
+    font-weight: 300;
+    font-size: 32px;
+  }
+
+  > h4 {
+    font-weight: 400;
+    font-size: 12px;
+    color: $greyText;
+    margin-bottom: 50px;
+  }
+
+  .movie-report__votes {
+    font-weight: 300;
+    font-size: 25px;
+    color: $greyText;
+  }
+}
