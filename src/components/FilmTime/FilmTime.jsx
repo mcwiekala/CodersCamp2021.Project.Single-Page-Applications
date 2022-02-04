@@ -4,7 +4,7 @@ import FilmShowings from "./FilmShowings";
 
 function FilmTime() {
     return (
-        <div className="filmtime">
+        <div className="filmshowings">
             <ul>
                 {FilmShowings.map((item) => (
                     <li key={item.id}>
