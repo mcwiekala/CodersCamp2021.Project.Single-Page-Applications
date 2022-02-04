@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
-import moviesData from "./movies_data.json";
+// import moviesData from "./movies_data.json";
 
 export default function MovieBrowser() {
+  const apiUrl =
+    "https://mcteamcamp-6416f-default-rtdb.firebaseio.com/movies.json";
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    // console.log(moviesData);
-    setMovies(moviesData.movies);
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setMovies(data));
   }, []);
 
   return (
