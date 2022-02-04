@@ -1,15 +1,15 @@
 import React from "react";
-import "./time.scss";
-import FilmTimeHour from "./FilmTimeHour";
+import "./filmtime.scss";
+import FilmShowings from "./FilmShowings";
 
 function FilmTime() {
     return (
-        <div className="time">
+        <div className="filmshowings">
             <ul>
-                {FilmTimeHour.map((item) => (
+                {FilmShowings.map((item) => (
                     <li key={item.id}>
                         <a href={item.url}>
-                        {item.time}
+                        {item.hour}
                         </a>
                     </li>
                 ))}
