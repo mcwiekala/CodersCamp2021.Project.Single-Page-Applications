@@ -5,6 +5,7 @@ import {
   signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { Eye, EyeOff } from "react-feather";
 import auth from "../../firebase-config";
 
 export default function Signup() {
@@ -15,6 +16,8 @@ export default function Signup() {
   const [loginPassword, setLoginPassword] = useState("");
 
   const [user, setUser] = useState({});
+
+  const [passwordShown, setPasswordShown] = useState(false);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
@@ -28,6 +31,7 @@ export default function Signup() {
         registerPassword
       );
       console.log(userView);
+      window.location.reload(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -41,6 +45,7 @@ export default function Signup() {
         loginPassword
       );
       console.log(userView);
+      window.location.reload(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -48,6 +53,11 @@ export default function Signup() {
 
   const logout = async () => {
     await signOut(auth);
+    window.location.reload(true);
+  };
+
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   return (
@@ -60,12 +70,18 @@ export default function Signup() {
             setRegisterEmail(event.target.value);
           }}
         />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        />
+        <div>
+          <input
+            placeholder="Password..."
+            onChange={(event) => {
+              setRegisterPassword(event.target.value);
+            }}
+            type={passwordShown ? "text" : "password"}
+          />
+          <button type="button" onClick={togglePassword}>
+            {passwordShown ? <Eye size={12} /> : <EyeOff size={12} />}
+          </button>
+        </div>
 
         <button type="button" onClick={register}>
           Create User
@@ -80,12 +96,18 @@ export default function Signup() {
             setLoginEmail(event.target.value);
           }}
         />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setLoginPassword(event.target.value);
-          }}
-        />
+        <div>
+          <input
+            placeholder="Password..."
+            onChange={(event) => {
+              setLoginPassword(event.target.value);
+            }}
+            type={passwordShown ? "text" : "password"}
+          />
+          <button type="button" onClick={togglePassword}>
+            {passwordShown ? <Eye size={12} /> : <EyeOff size={12} />}
+          </button>
+        </div>
 
         <button type="button" onClick={login}>
           Login

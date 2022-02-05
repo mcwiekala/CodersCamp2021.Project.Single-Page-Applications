@@ -3,7 +3,7 @@
 import { shallow, configure } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import App from "./App";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import React from "react";
 
 configure({ adapter: new Adapter() });
