@@ -1,6 +1,7 @@
 const cinemaHalls = [
         {
             numberOfSeats: { rows: 9, columns: 14 },
+            hallNumber: 0,
             filmShowing: [
                 {
                   id: 1,
@@ -48,6 +49,7 @@ const cinemaHalls = [
         },
         {
             numberOfSeats: { rows: 10, columns: 16 },
+            hallNumber: 1,
             filmShowing: [
                 {
                   id: 1,
@@ -94,3 +96,5 @@ const cinemaHalls = [
               ]             
         },
     ]
+
+export default cinemaHalls;

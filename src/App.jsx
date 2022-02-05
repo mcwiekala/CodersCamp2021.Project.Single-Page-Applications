@@ -2,14 +2,14 @@ import React from "react";
 import "./App.scss";
 
 import Navbar from "./components/Navbar/Navbar";
-import MoviesView from "./components/movie-viewer/MoviesView";
+import SeatReservation from "./pages/seat-reservation/SeatReservation";
 
 
 export default function App() {
   return (
     <div className="App">
       <Navbar />
-      <MoviesView />
+      <SeatReservation />
     </div>
   );
 }
