@@ -1,18 +1,18 @@
 import React from "react";
-import "./filmtime.scss";
+import "./film-showings.scss";
 import FilmShowings from "./FilmShowings";
 import GetCurrentDate from "./Date";
 
 function FilmTime() {
 
     return (
-        <div className="filmshowings">
-            <div className="filmshowings__date"><GetCurrentDate/></div>
+        <div className="film-showings">
+            <div className="film-showings__date"><GetCurrentDate/></div>
             <ul>
                 {FilmShowings.map((item) => (
                     <li key={item.id}>
                         <a href={item.url}>
-                        {item.hour}
+                            {item.hour}
                         </a>
                     </li>
                 ))}

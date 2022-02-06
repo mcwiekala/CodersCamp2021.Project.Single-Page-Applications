@@ -3,6 +3,7 @@ const FilmShowings = [
     id: 1,
     movieId: 111,
     hour: "15:30",
+    date:"06-02-2022",
     url: "#",
   },
   {
