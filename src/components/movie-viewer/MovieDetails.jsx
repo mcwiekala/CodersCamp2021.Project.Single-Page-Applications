@@ -18,9 +18,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     getData();
-  }, []); // eslint-disable-line
-
-  useEffect(() => null);
+  });
 
   return (
     <div className="movie-details-wrapper">
