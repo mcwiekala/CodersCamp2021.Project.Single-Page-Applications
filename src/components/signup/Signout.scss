@@ -1,0 +1,21 @@
+$color-secondary: rgb(245, 245, 245);
+
+@mixin flexLineNowrap {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.signout {
+  @include flexLineNowrap();
+}
+.signout__user {
+  @include flexLineNowrap();
+  margin: 10px;
+}
+
+.signout__user * {
+  color: $color-secondary;
+  margin: 5px;
+}

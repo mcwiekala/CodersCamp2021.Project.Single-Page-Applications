@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { Eye, EyeOff } from "react-feather";
 import auth from "../../firebase-config";
 import Button from "../navbar/Button";
-import "./Signup.scss";
+import "./Login.scss";
 
-export default function Signup() {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
+export default function Login() {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
 
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const register = async () => {
+  const login = async () => {
     try {
-      const userView = await createUserWithEmailAndPassword(
+      const userView = await signInWithEmailAndPassword(
         auth,
-        registerEmail,
-        registerPassword
+        loginEmail,
+        loginPassword
       );
       console.log(userView);
       window.location.reload(true);
@@ -30,24 +30,23 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup">
-      <h3> Register User</h3>
-      <div className="signup__input">
+    <div className="login">
+      <h3> Login</h3>
+      <div className="login__input">
         <input
           placeholder="Email..."
           onChange={(event) => {
-            setRegisterEmail(event.target.value);
+            setLoginEmail(event.target.value);
           }}
         />
         <div>
           <input
             placeholder="Password..."
             onChange={(event) => {
-              setRegisterPassword(event.target.value);
+              setLoginPassword(event.target.value);
             }}
             type={passwordShown ? "text" : "password"}
           />
-
           <Button
             type="button"
             buttonStyle="btn--outline"
@@ -58,8 +57,8 @@ export default function Signup() {
           </Button>
         </div>
       </div>
-      <Button type="button" onClick={register}>
-        Create User
+      <Button type="button" onClick={login}>
+        Login
       </Button>
     </div>
   );

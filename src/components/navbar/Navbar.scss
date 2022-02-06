@@ -28,6 +28,10 @@ $font-size-medium: 2rem;
   @include flexCenter();
 }
 
+.nav-bar__auth {
+  @include flexCenter();
+}
+
 .nav-bar__logo {
   color: $color-secondary;
   justify-self: start;
@@ -164,7 +168,7 @@ $font-size-medium: 2rem;
     transition: 250ms;
   }
 
-  Button {
+  .nav-bar__auth > Button {
     display: none;
   }
 }
