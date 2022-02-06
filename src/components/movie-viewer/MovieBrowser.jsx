@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { collection, getDoc, getFirestore } from "firebase/firestore";
+import firebase from "../../firebase-config";
 import Movie from "./Movie";
 import "./style/MovieBrowser.scss";
-import moviesData from "./movies_data.json";
 
 export default function MovieBrowser() {
   const [movies, setMovies] = useState([]);
 
+  const db = getFirestore(firebase);
+
+  const getMovies = async () => {
+    console.log("connection to db started");
+    const docRef = collection(db, "movies");
+    getDoc(docRef).then((snapshot) => {
+      console.log(snapshot);
+      const moviesData = [];
+      snapshot.docs.forEach((doc) => {
+        moviesData.push({ ...doc.data() });
+      });
+      setMovies(moviesData);
+    });
+  };
+
   useEffect(() => {
-    // console.log(moviesData);
-    setMovies(moviesData.movies);
+    getMovies();
+    console.log(movies);
   }, []);
 
   return (
