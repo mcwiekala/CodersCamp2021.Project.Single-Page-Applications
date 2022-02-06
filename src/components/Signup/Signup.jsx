@@ -4,10 +4,13 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithEmailAndPassword,
+  getAuth,
 } from "firebase/auth";
-import auth from "../../firebase-config";
+import firebase from "../../firebase-config";
 
 export default function Signup() {
+  const auth = getAuth(firebase);
+
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
 
