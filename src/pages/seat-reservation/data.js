@@ -97,4 +97,64 @@ const cinemaHalls = [
         },
     ]
 
+    const reservations = [
+    {
+        userId: 1,
+        hallId: 0,
+        filmDateTime: 2,
+        seat: { row: 3, column: 9},
+        movieId: 10,
+        pickupCode: 19345,
+        status: "ACTIVE"
+    }, 
+    {
+        userId: 129,
+        hallId: 3,
+        filmDateTime: 3,
+        seat: { row: 8, column: 10},
+        movieId: 13,
+        pickupCode: 18345,
+        status: "ACTIVE"
+    },
+    {
+        userId: 82,
+        hallId: 2,
+        filmDateTime: 0,
+        seat: { row: 1, column: 2},
+        movieId: 21,
+        pickupCode: 19445,
+        status: "ACTIVE"
+    }
+]
+
+const reservations = [
+    {
+        userId: 1,
+        hallId: 0,
+        filmDateTime: 2,
+        seat: { row: 3, column: 9},
+        movieId: 10,
+        pickupCode: 19345,
+        status: "ACTIVE"
+    }, 
+    {
+        userId: 129,
+        hallId: 3,
+        filmDateTime: 3,
+        seat: { row: 8, column: 10},
+        movieId: 13,
+        pickupCode: 18345,
+        status: "ACTIVE"
+    },
+    {
+        userId: 82,
+        hallId: 2,
+        filmDateTime: 0,
+        seat: { row: 1, column: 2},
+        movieId: 21,
+        pickupCode: 19445,
+        status: "ACTIVE"
+    }
+]
+
 export default cinemaHalls;
