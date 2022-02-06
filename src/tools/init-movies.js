@@ -5,10 +5,8 @@ const data = require("./movies_data.json");
 
 const db = getFirestore(firebase);
 
-data.movies.forEach((movie, index) => {
-  console.log(movie);
-  setDoc(doc(db, "movies", index.toString()), {
-    movie,
-  });
-  console.log(`added: ${movie.Title}, id: ${index}`);
+data.movies.forEach((movieElement, index) => {
+  console.log(movieElement);
+  setDoc(doc(db, "movies", index.toString()), movieElement);
+  console.log(`added: ${movieElement.Title}, id: ${index}`);
 });
