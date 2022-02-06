@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
     "feather-icons": "^4.28.0",
-    "firebase": "^9.6.4",
     "gh-pages": "^3.2.3",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
@@ -30,7 +29,7 @@
     "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.+(html|json|scss|css|md|js|jsx)\"",
+    "format": "prettier --write \"**/*.+(html|json|scss|css|md)\"",
     "prepare": "husky install"
   },
   "eslintConfig": {
