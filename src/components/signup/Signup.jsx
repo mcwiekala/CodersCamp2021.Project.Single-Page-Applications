@@ -8,7 +8,7 @@ import "./Signup.scss";
 export default function Signup() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
   const register = async () => {
@@ -21,7 +21,17 @@ export default function Signup() {
       console.log(userView);
       window.location.reload(true);
     } catch (error) {
-      console.log(error.message);
+      if (
+        error.code === "auth/invalid-email" ||
+        error.code === "auth/wrong-password"
+      )
+        setErrorMessage("Incorrect email address or password.");
+      else if (error.code === "auth/internal-error")
+        setErrorMessage("No login or password.");
+      else if (error.code === "auth/weak-password")
+        setErrorMessage("Password is too short.");
+      else if (error.code === "auth/email-already-in-use")
+        setErrorMessage("User already exists.");
     }
   };
 
@@ -58,6 +68,7 @@ export default function Signup() {
           </Button>
         </div>
       </div>
+      <div className="signup__error">{errorMessage}</div>
       <Button type="button" onClick={register}>
         Create User
       </Button>

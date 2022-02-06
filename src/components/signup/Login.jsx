@@ -8,7 +8,7 @@ import "./Login.scss";
 export default function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
   const login = async () => {
@@ -21,7 +21,15 @@ export default function Login() {
       console.log(userView);
       window.location.reload(true);
     } catch (error) {
-      console.log(error.message);
+      if (
+        error.code === "auth/invalid-email" ||
+        error.code === "auth/wrong-password"
+      )
+        setErrorMessage("Incorrect email address or password.");
+      else if (error.code === "auth/internal-error")
+        setErrorMessage("No login or password.");
+      else if (error.code === "auth/user-not-found")
+        setErrorMessage("User does not exist.");
     }
   };
 
@@ -57,6 +65,7 @@ export default function Login() {
           </Button>
         </div>
       </div>
+      <div className="login__error">{errorMessage}</div>
       <Button type="button" onClick={login}>
         Login
       </Button>

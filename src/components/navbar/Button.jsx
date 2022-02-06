@@ -26,9 +26,15 @@ function Button({ children, onClick, buttonStyle, buttonSize }) {
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  onClick: PropTypes.string.isRequired,
-  buttonStyle: PropTypes.string.isRequired,
-  buttonSize: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  buttonStyle: PropTypes.string,
+  buttonSize: PropTypes.string,
+};
+
+Button.defaultProps = {
+  onClick: null,
+  buttonStyle: "btn--primary",
+  buttonSize: "btn--medium",
 };
 
 export default Button;

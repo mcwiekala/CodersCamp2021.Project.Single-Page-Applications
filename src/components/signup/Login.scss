@@ -17,3 +17,11 @@
   margin-right: 0;
   margin-top: 20px;
 }
+
+.login__error:empty {
+  display: none;
+}
+
+.login__error {
+  margin-top: 10px;
+}

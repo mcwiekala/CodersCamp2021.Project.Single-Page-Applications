@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../../firebase-config";
 import Button from "../navbar/Button";
@@ -6,9 +6,15 @@ import "./Signout.scss";
 
 export default function Signup() {
   const [user, setUser] = useState({});
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+      }),
+    []
+  );
+
   const logout = async () => {
     await signOut(auth);
     window.location.reload(true);
