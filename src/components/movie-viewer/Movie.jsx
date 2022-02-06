@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./style/Movie.scss";
+import FilmTime from "../film-time/FilmTime";
 
 export default function Movie({
   id,
@@ -27,6 +28,7 @@ export default function Movie({
           {genre} | {rated} | {runtime}
         </h4>
         <p>{plot}</p>
+        <FilmTime/>
       </div>
       <div className="movie-report">
         <div className="movie-report__rating">{rating}</div>
