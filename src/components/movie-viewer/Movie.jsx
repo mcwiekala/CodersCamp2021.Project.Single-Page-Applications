@@ -16,7 +16,7 @@ export default function Movie({
 }) {
   return (
     <div className="movie-wrapper">
-      <div className="movie__poster">
+      <div className="poster">
         <Link to={`/movie/${id}`}>
           <img src={poster} alt="" />
         </Link>
@@ -24,7 +24,7 @@ export default function Movie({
       <div className="movie-details">
         <h1>{title}</h1>
         <h4>
-          {genre} | {rated === "R" ? "18+" : rated} | {runtime}
+          {genre} | {rated} | {runtime}
         </h4>
         <p>{plot}</p>
       </div>
