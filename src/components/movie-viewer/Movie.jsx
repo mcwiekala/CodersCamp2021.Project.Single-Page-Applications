@@ -28,7 +28,7 @@ export default function Movie({
           {genre} | {rated === "R" ? "18+" : rated} | {runtime}
         </h4>
         <p>{plot}</p>
-        <FilmShowing />
+        <FilmShowing movieId={id} />
       </div>
       <div className="movie-report">
         <div className="movie-report__rating">{rating}</div>
