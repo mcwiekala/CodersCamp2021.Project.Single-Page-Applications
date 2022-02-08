@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import auth from "../../firebase-config";
+import { onAuthStateChanged, signOut, getAuth } from "firebase/auth";
+import firebase from "../../firebase-config";
 import Button from "./Button";
 import "./Signout.scss";
 
 export default function Signup() {
+  const auth = getAuth(firebase);
   const [user, setUser] = useState({});
 
   useEffect(
@@ -12,7 +13,7 @@ export default function Signup() {
       onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
       }),
-    []
+    [auth]
   );
 
   const logout = async () => {

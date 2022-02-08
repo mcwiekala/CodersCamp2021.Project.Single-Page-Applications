@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { Eye, EyeOff } from "react-feather";
-import auth from "../../firebase-config";
+import firebase from "../../firebase-config";
 import Button from "../navbar/Button";
 import "./Login.scss";
 
 export default function Login() {
+  const auth = getAuth(firebase);
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

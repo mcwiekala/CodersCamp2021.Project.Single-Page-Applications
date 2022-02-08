@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Menu, X } from "react-feather";
-import { onAuthStateChanged } from "firebase/auth";
-import auth from "../../firebase-config";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+import firebase from "../../firebase-config";
 import MenuItems from "./MenuItems";
 import "./Navbar.scss";
 import Button from "./Button";
@@ -11,6 +11,7 @@ import Modal from "../auth/Modal";
 import Signout from "./Signout";
 
 function Navbar() {
+  const auth = getAuth(firebase);
   const [clicked, setClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showSignup, setShowSignup] = useState(false);

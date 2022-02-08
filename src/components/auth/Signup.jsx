@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { Eye, EyeOff } from "react-feather";
-import auth from "../../firebase-config";
+import firebase from "../../firebase-config";
 import Button from "../navbar/Button";
 import "./Signup.scss";
 
 export default function Signup() {
+  const auth = getAuth(firebase);
+
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
