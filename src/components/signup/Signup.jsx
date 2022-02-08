@@ -11,7 +11,8 @@ export default function Signup() {
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const register = async () => {
+  const register = async (event) => {
+    event.preventDefault();
     try {
       const userView = await createUserWithEmailAndPassword(
         auth,
@@ -19,7 +20,7 @@ export default function Signup() {
         registerPassword
       );
       console.log(userView);
-      window.location.reload(true);
+      // window.location.reload(true);
     } catch (error) {
       if (
         error.code === "auth/invalid-email" ||
@@ -40,7 +41,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup">
+    <form onSubmit={register} className="signup">
       <h3> Register User</h3>
       <div className="signup__input">
         <input
@@ -69,9 +70,7 @@ export default function Signup() {
         </div>
       </div>
       <div className="signup__error">{errorMessage}</div>
-      <Button type="button" onClick={register}>
-        Create User
-      </Button>
-    </div>
+      <Button submitButton>Create User</Button>
+    </form>
   );
 }

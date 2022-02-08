@@ -23,17 +23,5 @@ const MenuItems = [
     url: "#",
     cName: "nav-bar__links",
   },
-  {
-    id: 5,
-    title: "Register",
-    url: "#",
-    cName: "nav-bar__links-mobile",
-  },
-  {
-    id: 6,
-    title: "Log in",
-    url: "#",
-    cName: "nav-bar__links-mobile",
-  },
 ];
 export default MenuItems;

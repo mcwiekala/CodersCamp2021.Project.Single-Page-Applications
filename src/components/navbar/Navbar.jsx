@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu, X } from "react-feather";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../../firebase-config";
@@ -20,15 +20,14 @@ function Navbar() {
     setUser(currentUser);
   });
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-  const toggleSignup = () => {
-    setShowSignup(!showSignup);
-  };
-  const toggleLogin = () => {
-    setShowLogin(!showLogin);
-  };
+  useEffect(() => {
+    if (user && Object.keys(user).length !== 0) {
+      setShowModal(false);
+      setShowLogin(false);
+      setShowSignup(false);
+      console.log(user);
+    }
+  }, [user]);
 
   return (
     <nav className="nav-bar" data-testid="navbar">
@@ -45,39 +44,42 @@ function Navbar() {
           <Menu className="nav-bar__menu--icons" />
         )}
       </button>
-      <ul className={clicked ? "nav-bar__menu active" : "nav-bar__menu"}>
-        {MenuItems.map((item) => (
-          <li key={item.id}>
-            <a className={item.cName} href={item.url}>
-              {item.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-      {user ? (
-        <Signout />
-      ) : (
-        <div className="nav-bar__auth">
-          <Button
-            className="nav-bar__button"
-            onClick={() => {
-              toggleSignup();
-              toggleModal();
-            }}
-          >
-            Register
-          </Button>
-          <Button
-            className="nav-bar__button"
-            onClick={() => {
-              toggleLogin();
-              toggleModal();
-            }}
-          >
-            Log in
-          </Button>
-        </div>
-      )}
+      <div className={clicked ? "nav-bar__menu active" : "nav-bar__menu"}>
+        <ul className="nav-bar__href">
+          {MenuItems.map((item) => (
+            <li key={item.id}>
+              <a className={item.cName} href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {user ? (
+          <Signout />
+        ) : (
+          <div className="nav-bar__auth">
+            <Button
+              className="nav-bar__button"
+              onClick={() => {
+                setShowSignup(true);
+                setShowModal(true);
+              }}
+            >
+              Register
+            </Button>
+            <Button
+              className="nav-bar__button"
+              onClick={() => {
+                setShowLogin(true);
+                setShowModal(true);
+              }}
+            >
+              Log in
+            </Button>
+          </div>
+        )}
+      </div>
+
       {showModal ? (
         <Modal>
           <Button
@@ -85,7 +87,7 @@ function Navbar() {
             buttonSize="btn--small"
             type="button"
             onClick={() => {
-              toggleModal();
+              setShowModal(false);
               setShowSignup(false);
               setShowLogin(false);
             }}

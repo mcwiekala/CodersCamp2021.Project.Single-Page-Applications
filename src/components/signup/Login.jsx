@@ -11,7 +11,8 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
-  const login = async () => {
+  const login = async (event) => {
+    event.preventDefault();
     try {
       const userView = await signInWithEmailAndPassword(
         auth,
@@ -19,7 +20,7 @@ export default function Login() {
         loginPassword
       );
       console.log(userView);
-      window.location.reload(true);
+      // window.location.reload(true);
     } catch (error) {
       if (
         error.code === "auth/invalid-email" ||
@@ -38,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <div className="login">
+    <form onSubmit={login} className="login">
       <h3> Login</h3>
       <div className="login__input">
         <input
@@ -66,9 +67,7 @@ export default function Login() {
         </div>
       </div>
       <div className="login__error">{errorMessage}</div>
-      <Button type="button" onClick={login}>
-        Login
-      </Button>
-    </div>
+      <Button submitButton>Login</Button>
+    </form>
   );
 }

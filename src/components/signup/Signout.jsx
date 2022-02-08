@@ -17,7 +17,7 @@ export default function Signup() {
 
   const logout = async () => {
     await signOut(auth);
-    window.location.reload(true);
+    // window.location.reload(true);
   };
 
   return (
