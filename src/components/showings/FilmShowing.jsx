@@ -1,6 +1,6 @@
 import React from "react";
 import "./film-showings.scss";
-import filmShowingsData from "./FilmShowingsData";
+import filmShowingsData from "../../tools/showings/filmShowingsData";
 
 function FilmTime() {
   const filmsByDayMap = filmShowingsData.reduce((acc, value) => {
