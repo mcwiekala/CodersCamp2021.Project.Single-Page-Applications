@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore";
 import { useParams } from "react-router-dom";
-// import moviesData from "./movies_data.json";
+import firebase from "../../firebase-config";
 import "./style/MovieDetails.scss";
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
 
   const { id } = useParams();
-  const apiKey = "46e8c41c";
-  const apiUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
 
-  const getData = () => {
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => setMovie(data));
+  const db = getFirestore(firebase);
+  const q = query(collection(db, "movies"), where("imdbID", "==", id));
+
+  const getData = async () => {
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setMovie(doc.data());
+    });
   };
 
   useEffect(() => {
