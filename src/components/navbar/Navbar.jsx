@@ -5,10 +5,10 @@ import auth from "../../firebase-config";
 import MenuItems from "./MenuItems";
 import "./Navbar.scss";
 import Button from "./Button";
-import Signup from "../signup/Signup";
-import Login from "../signup/Login";
-import Modal from "../signup/Modal";
-import Signout from "../signup/Signout";
+import Signup from "../auth/Signup";
+import Login from "../auth/Login";
+import Modal from "../auth/Modal";
+import Signout from "./Signout";
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
@@ -25,7 +25,6 @@ function Navbar() {
       setShowModal(false);
       setShowLogin(false);
       setShowSignup(false);
-      console.log(user);
     }
   }, [user]);
 

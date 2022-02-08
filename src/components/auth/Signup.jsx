@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Eye, EyeOff } from "react-feather";
 import auth from "../../firebase-config";
@@ -8,31 +8,36 @@ import "./Signup.scss";
 export default function Signup() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
   const register = async (event) => {
     event.preventDefault();
-    try {
-      const userView = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      console.log(userView);
-      // window.location.reload(true);
-    } catch (error) {
-      if (
-        error.code === "auth/invalid-email" ||
-        error.code === "auth/wrong-password"
-      )
-        setErrorMessage("Incorrect email address or password.");
-      else if (error.code === "auth/internal-error")
-        setErrorMessage("No login or password.");
-      else if (error.code === "auth/weak-password")
-        setErrorMessage("Password is too short.");
-      else if (error.code === "auth/email-already-in-use")
-        setErrorMessage("User already exists.");
+    if (registerPassword === registerConfirmPassword) {
+      try {
+        await createUserWithEmailAndPassword(
+          auth,
+          registerEmail,
+          registerPassword
+        );
+
+        // window.location.reload(true);
+      } catch (error) {
+        if (
+          error.code === "auth/invalid-email" ||
+          error.code === "auth/wrong-password"
+        )
+          setErrorMessage("Incorrect email address or password.");
+        else if (error.code === "auth/internal-error")
+          setErrorMessage("No login or password.");
+        else if (error.code === "auth/weak-password")
+          setErrorMessage("Password is too short.");
+        else if (error.code === "auth/email-already-in-use")
+          setErrorMessage("User already exists.");
+      }
+    } else {
+      setErrorMessage("Those passwords didn’t match. Try again.");
     }
   };
 
@@ -50,15 +55,22 @@ export default function Signup() {
             setRegisterEmail(event.target.value);
           }}
         />
-        <div>
+        <input
+          className="signup__password"
+          placeholder="Password..."
+          onChange={(event) => {
+            setRegisterPassword(event.target.value);
+          }}
+          type={passwordShown ? "text" : "password"}
+        />
+        <div className="signup__confirm-password">
           <input
-            placeholder="Password..."
+            placeholder="Confirm Password..."
             onChange={(event) => {
-              setRegisterPassword(event.target.value);
+              setRegisterConfirmPassword(event.target.value);
             }}
             type={passwordShown ? "text" : "password"}
           />
-
           <Button
             type="button"
             buttonStyle="btn--outline"

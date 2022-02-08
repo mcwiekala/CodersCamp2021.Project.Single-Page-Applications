@@ -14,12 +14,7 @@ export default function Login() {
   const login = async (event) => {
     event.preventDefault();
     try {
-      const userView = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(userView);
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       // window.location.reload(true);
     } catch (error) {
       if (
@@ -48,7 +43,7 @@ export default function Login() {
             setLoginEmail(event.target.value);
           }}
         />
-        <div>
+        <div className="login__password ">
           <input
             placeholder="Password..."
             onChange={(event) => {

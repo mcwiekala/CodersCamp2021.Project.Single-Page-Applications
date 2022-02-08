@@ -1,11 +1,11 @@
-.signup {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
 }
 
-.signup__input {
+.login__input {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -13,15 +13,19 @@
   padding-left: 50px;
 }
 
-.signup > Button {
+.login > Button {
   margin-right: 0;
   margin-top: 20px;
 }
 
-.signup__error:empty {
+.login__error:empty {
   display: none;
 }
 
-.signup__error {
+.login__error {
+  margin-top: 10px;
+}
+
+.login__password {
   margin-top: 10px;
 }

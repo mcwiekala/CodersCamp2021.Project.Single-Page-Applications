@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../../firebase-config";
-import Button from "../navbar/Button";
+import Button from "./Button";
 import "./Signout.scss";
 
 export default function Signup() {
