@@ -15,7 +15,6 @@ const db = getFirestore(firebase);
 
 function FilmShowing({ movieId }) {
   const [showings, setShowings] = useState([]);
-  console.log(typeof movieId);
 
   const getShowings = async () => {
     const showingsRef = collection(db, "showings");
