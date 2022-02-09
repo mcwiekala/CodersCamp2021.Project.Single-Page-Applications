@@ -2,8 +2,8 @@
 import React, { createContext, useState } from "react";
 import "./seatReservation.scss";
 // eslint-disable-next-line import/no-cycle
-import Seat from "./Seat/Seat";
-import Ticket from "./Ticket/Ticket";
+import Seat from "./seat/Seat";
+import Ticket from "./ticket/Ticket";
 import cinemaHalls from "./data";
 
 const items = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
