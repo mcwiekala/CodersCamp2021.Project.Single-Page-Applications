@@ -1,13 +1,18 @@
 .movie-seats {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.movie-seats h2 {
+  color: white;
+}
+  
 .seats {
   width: 900px;
   height: 600px;
-  background-color: #ccc;
+  padding: 20px 25px 25px 40px;
+  background-color: #222;
   display: grid;
   grid: repeat(9, 60px) / auto-flow 60px;
   align-items: flex-end;
@@ -22,30 +27,11 @@
   border: none;
   display: block;
 }
-
-.ticket {
-  margin-top: 30px;
-  width: 300px;
-  height: 140px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 7px 1px #aaa;
-
-  button {
-    width: 110px;
-    height: 60px;
-    border: none;
-    margin: 5px;
-    display: inline;
-    cursor: pointer;
-  }
-
-  .normal {
-    color: white;
-    background-color: rgb(182, 25, 25);
-  }
-
-  .discount {
-    background-color: white;
-    border: 2px solid rgb(182, 25, 25);
-  }
+.reservationButton {
+  background-color: #222;
+  padding: 20px 30px;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  border-radius: 10px;
 }
