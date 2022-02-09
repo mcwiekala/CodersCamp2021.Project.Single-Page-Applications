@@ -8,6 +8,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import firebase from "../../firebase-config";
 
 const db = getFirestore(firebase);
@@ -15,6 +16,7 @@ const db = getFirestore(firebase);
 function FilmShowing({ movieId }) {
   const [showings, setShowings] = useState([]);
   console.log(typeof movieId);
+
   const getShowings = async () => {
     const showingsRef = collection(db, "showings");
     const myQuery = query(showingsRef, where("movieId", "==", Number(movieId)));
@@ -22,7 +24,10 @@ function FilmShowing({ movieId }) {
 
     const firebaseShowings = [];
     showingsSnapshot.forEach((doc) => {
-      firebaseShowings.push(doc.data());
+      const showing = doc.data();
+      showing.id = doc.id;
+      // console.log("test ", showing);
+      firebaseShowings.push(showing);
     });
 
     const filmsByDayMap = firebaseShowings.reduce((acc, value) => {
@@ -44,21 +49,20 @@ function FilmShowing({ movieId }) {
 
   return (
     <div className="film-showings">
-      test
       {Object.entries(showings).map(([showingDate, showingList]) => (
         <div>
           <div className="film-showings__date">{showingDate}</div>
           <ul>
             {showingList.map((showing) => (
               <li key={showing.id}>
-                <a href="/#">
+                <Link to={`/film-showing-registration/${showing.id}`}>
                   {showing.date
                     .toDate()
                     .toLocaleTimeString(navigator.language, {
                       hour: "2-digit",
                       minute: "2-digit",
                     })}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
