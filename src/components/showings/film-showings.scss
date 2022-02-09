@@ -1,0 +1,33 @@
+.film-showings {
+  padding-top: 35px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+
+    li {
+      margin-right: 15px;
+      border: 2px solid #c8006d;
+      border-radius: 3px;
+      background: #000;
+      font-size: 26px;
+
+      &:hover {
+        background: linear-gradient(90deg, #c8006d, #7a0042);
+        background: -webkit-linear-gradient(left, #c8006d, #7a0042);
+      }
+
+      a {
+        display: block;
+        padding: 15px;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__date {
+    color: #fff;
+  }
+}

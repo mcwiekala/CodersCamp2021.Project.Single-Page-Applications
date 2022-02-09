@@ -33,6 +33,21 @@ $color-focus: rgb(0, 255, 255);
   transition: all 0.3s ease-in-out;
 }
 
+.btn--small {
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: $color-secondary;
+}
+
+.btn--small:hover {
+  transition: all 0.3s ease-in-out;
+  padding: 4px 14px;
+  color: $color-focus;
+  background: $color-secondary;
+  transition: 250ms;
+}
+
 .btn--medium {
   padding: 8px 20px;
   border-radius: 4px;

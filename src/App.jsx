@@ -1,9 +1,7 @@
 import React from "react";
 import "./App.scss";
-
-import Navbar from "./components/Navbar/Navbar";
-import SeatReservation from "./pages/seat-reservation/SeatReservation";
-
+import Navbar from "./components/navbar/Navbar";
+import MoviesView from "./components/movie-viewer/MoviesView";
 
 export default function App() {
   return (

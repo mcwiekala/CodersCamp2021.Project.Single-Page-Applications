@@ -1,0 +1,34 @@
+$color-secondary: rgb(245, 245, 245);
+$color-backgroung-window: rgb(8, 8, 8);
+$color-backgroung: rgb(77, 77, 77, 0.8);
+$font-size-smal: 1.5rem;
+$font-size-medium: 2rem;
+
+#modal {
+  background-color: $color-backgroung;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal:empty {
+  display: none;
+}
+
+#modal > div {
+  max-width: 500px;
+  padding: 15px;
+  text-align: right;
+  border-radius: 15px;
+  background: $color-backgroung-window;
+  color: $color-secondary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
