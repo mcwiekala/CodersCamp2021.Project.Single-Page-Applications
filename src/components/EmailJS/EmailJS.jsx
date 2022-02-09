@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import emailjs from "@emailjs/browser";
-import { SERVICE_ID, USER_ID } from "../const";
+import { SERVICE_ID, USER_ID } from "../../const";
 
 function EmailJS({ renderForm, templateID }) {
   const regForm = useRef();

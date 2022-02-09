@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
-function EmailJSExampleofUse() {
+function EmailJSExampleOfUse() {
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -29,4 +29,4 @@ function EmailJSExampleofUse() {
   };
 }
 
-export default EmailJSExampleofUse;
+export default EmailJSExampleOfUse;

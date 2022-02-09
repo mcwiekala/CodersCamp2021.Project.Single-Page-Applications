@@ -29,7 +29,7 @@
     "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.+(html|json|scss|css|md)\"",
+    "format": "prettier --write \"**/*.+(html|json|scss|css|md|js|jsx)\"",
     "prepare": "husky install"
   },
   "eslintConfig": {
