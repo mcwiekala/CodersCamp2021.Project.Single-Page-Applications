@@ -13,12 +13,11 @@ import firebase from "../../firebase-config";
 const db = getFirestore(firebase);
 
 function FilmShowing({ movieId }) {
-  // TODO: use it instead hardcoded value
   const [showings, setShowings] = useState([]);
-
+  console.log(typeof movieId);
   const getShowings = async () => {
     const showingsRef = collection(db, "showings");
-    const myQuery = query(showingsRef, where("movieId", "==", 0));
+    const myQuery = query(showingsRef, where("movieId", "==", Number(movieId)));
     const showingsSnapshot = await getDocs(myQuery);
 
     const firebaseShowings = [];

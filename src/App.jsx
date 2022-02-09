@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.scss";
-
 import Navbar from "./components/navbar/Navbar";
 import MoviesView from "./components/movie-viewer/MoviesView";
 

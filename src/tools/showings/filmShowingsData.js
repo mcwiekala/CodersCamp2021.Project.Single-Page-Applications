@@ -17,6 +17,22 @@ const filmShowingsData = [
     movieId: 0,
     date: new Date("2022-02-18T22:00:00"),
   },
+  {
+    movieId: 1,
+    date: new Date("2022-02-17T21:00:00"),
+  },
+  {
+    movieId: 1,
+    date: new Date("2022-02-17T22:00:00"),
+  },
+  {
+    movieId: 1,
+    date: new Date("2022-02-17T23:30:00"),
+  },
+  {
+    movieId: 10,
+    date: new Date("2022-02-19T12:30:00"),
+  },
 ];
 
 export default filmShowingsData;
