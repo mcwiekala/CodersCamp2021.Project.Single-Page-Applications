@@ -13,14 +13,13 @@ export default function MovieBrowser() {
     const querySnapshot = await getDocs(collection(db, "movies"));
     const firebaseMovies = [];
     querySnapshot.forEach((doc) => {
-      firebaseMovies.push(doc.data());
+      firebaseMovies.push({ ...doc.data(), id: doc.id });
     });
     setMovies(firebaseMovies);
   };
 
   useEffect(() => {
     getMovies();
-    console.log(movies);
   }, []);
 
   return (
@@ -29,7 +28,7 @@ export default function MovieBrowser() {
         {movies.map((item) => (
           <Movie
             key={item.imdbID}
-            id={item.imdbID}
+            id={item.id}
             title={item.Title}
             genre={item.Genre}
             plot={item.Plot}

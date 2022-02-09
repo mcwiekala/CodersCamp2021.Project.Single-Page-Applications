@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  getFirestore,
-} from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import firebase from "../../firebase-config";
 import "./style/MovieDetails.scss";
@@ -16,18 +10,20 @@ export default function MovieDetails() {
   const { id } = useParams();
 
   const db = getFirestore(firebase);
-  const q = query(collection(db, "movies"), where("imdbID", "==", id));
 
   const getData = async () => {
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, "movies"));
+    const firebaseMovies = [];
     querySnapshot.forEach((doc) => {
-      setMovie(doc.data());
+      firebaseMovies.push({ ...doc.data(), id: doc.id });
     });
+    const movieData = firebaseMovies.filter((item) => item.id === id);
+    setMovie(movieData[0]);
   };
 
   useEffect(() => {
     getData();
-  });
+  }, [id]);
 
   return (
     <div className="movie-details-wrapper">
