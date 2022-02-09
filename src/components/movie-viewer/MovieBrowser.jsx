@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import firebase from "../../firebase-config";
-import Movie from "./Movie";
+import Movie from "./MovieCard";
 import "./style/MovieBrowser.scss";
 
 export default function MovieBrowser() {

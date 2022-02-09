@@ -52,7 +52,14 @@ function FilmShowing({ movieId }) {
           <ul>
             {showingList.map((showing) => (
               <li key={showing.id}>
-                <a href="/#">{showing.date.toDate().toLocaleTimeString()}</a>
+                <a href="/#">
+                  {showing.date
+                    .toDate()
+                    .toLocaleTimeString(navigator.language, {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                </a>
               </li>
             ))}
           </ul>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Menu, X } from "react-feather";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import firebase from "../../firebase-config";
-import MenuItems from "./MenuItems";
 import "./Navbar.scss";
 import Button from "./Button";
 import Signup from "../auth/Signup";
@@ -45,15 +44,6 @@ function Navbar() {
         )}
       </button>
       <div className={clicked ? "nav-bar__menu active" : "nav-bar__menu"}>
-        <ul className="nav-bar__href">
-          {MenuItems.map((item) => (
-            <li key={item.id}>
-              <a className={item.cName} href={item.url}>
-                {item.title}
-              </a>
-            </li>
-          ))}
-        </ul>
         {user ? (
           <Signout />
         ) : (
