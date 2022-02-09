@@ -1,9 +1,9 @@
 .movie-seats {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .seats {
   width: 900px;
   height: 600px;
@@ -29,7 +29,7 @@
   height: 140px;
   border-radius: 5px;
   box-shadow: 0px 0px 7px 1px #aaa;
-  
+
   button {
     width: 110px;
     height: 60px;
