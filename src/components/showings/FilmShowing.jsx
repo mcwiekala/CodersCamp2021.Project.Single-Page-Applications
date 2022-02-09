@@ -24,10 +24,7 @@ function FilmShowing({ movieId }) {
 
     const firebaseShowings = [];
     showingsSnapshot.forEach((doc) => {
-      const showing = doc.data();
-      showing.id = doc.id;
-      // console.log("test ", showing);
-      firebaseShowings.push(showing);
+      firebaseShowings.push({ ...doc.data(), id: doc.id });
     });
 
     const filmsByDayMap = firebaseShowings.reduce((acc, value) => {
