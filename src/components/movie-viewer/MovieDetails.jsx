@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import firebase from "../../firebase-config";
 import "./style/MovieDetails.scss";
@@ -12,13 +12,10 @@ export default function MovieDetails() {
   const db = getFirestore(firebase);
 
   const getData = async () => {
-    const querySnapshot = await getDocs(collection(db, "movies"));
-    const firebaseMovies = [];
-    querySnapshot.forEach((doc) => {
-      firebaseMovies.push({ ...doc.data(), id: doc.id });
-    });
-    const movieData = firebaseMovies.filter((item) => item.id === id);
-    setMovie(movieData[0]);
+    const docRef = doc(db, "movies", id);
+    const docSnap = await getDoc(docRef);
+
+    setMovie({ ...docSnap.data(), id: docSnap.id });
   };
 
   useEffect(() => {
