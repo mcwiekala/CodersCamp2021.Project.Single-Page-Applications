@@ -1,11 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 // eslint-disable-next-line import/no-cycle
 import { data } from "../SeatReservation";
 
 // eslint-disable-next-line react/prop-types
-function Seat({ taken = false, row = 0, col = 0 }) {
+export default function Seat({ row, col, taken }) {
+  // const [coords, setCoords] = useState();
+  // console.log(typeof taken);
   const { coords, setCoords } = useContext(data);
-  let chosen;
+  let chosen = false;
   if (coords && coords.row === row && coords.col === col) {
     chosen = true;
   } else {
@@ -17,6 +20,7 @@ function Seat({ taken = false, row = 0, col = 0 }) {
       type="button"
       onClick={() => {
         if (taken === false) {
+          console.log("click");
           setCoords({ col, row });
         }
       }}
@@ -25,9 +29,17 @@ function Seat({ taken = false, row = 0, col = 0 }) {
         backgroundColor: `${taken ? "#444" : `${chosen ? "orange" : "green"}`}`,
       }}
     >
-      {row}, {col}
+      {row}, {col}, {taken.toString()}, {chosen.toString()}
     </button>
   );
 }
 
-export default Seat;
+Seat.propTypes = {
+  row: PropTypes.number.isRequired,
+  col: PropTypes.number.isRequired,
+  taken: PropTypes.bool,
+};
+
+Seat.defaultProps = {
+  taken: false,
+};
