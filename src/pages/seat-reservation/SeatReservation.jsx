@@ -1,68 +1,125 @@
 /* eslint-disable no-loop-func */
 import React, { createContext, useState, useEffect } from "react";
-import "./seatReservation.scss"
+import "./seatReservation.scss";
 import { useParams } from "react-router-dom";
 // eslint-disable-next-line import/no-cycle
-import Seat from "./seat/Seat"
-import { showings, reservations } from "./data"
+import Seat from "./seat/Seat";
+// import { showings, reservations } from "./data";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  getAll,
+  doc,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+// import { useParams } from "react-router-dom";
+import firebase from "../../firebase-config";
 
 let taken;
 const hall = {
   cols: 14,
-  rows: 9
-}
-let takenSeats = []
-let items = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+  rows: 9,
+};
+let takenSeats = [];
+let items = Array.from(Array(hall.cols), () => new Array(hall.rows));
 
 const prepareSeats = (showingId) => {
-  reservations.forEach(el => {
-    showings[showingId].reservationId.forEach(id => {
-      if (el.pickupCode === id) {
-        takenSeats.push(el.seat)
-      }
-    })
-  })
-  items = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-  for (let i=1; i<=hall.cols; i+=1) {
-    for (let j=1; j<=hall.rows; j+=1) {
+  // reservations.forEach((el) => {
+  //   showings[showingId].reservationId.forEach((id) => {
+  //     if (el.pickupCode === id) {
+  //       takenSeats.push(el.seat);
+  //     }
+  //   });
+  // });
+  console.log("test");
+  console.log(Array.from(Array(hall.cols), () => new Array(hall.rows)));
+  items = Array.from(Array(hall.cols), () => new Array(hall.rows));
+  for (let col = 1; col <= hall.cols; col += 1) {
+    for (let row = 1; row <= hall.rows; row += 1) {
       taken = false;
-      takenSeats.forEach(el => {
-        if (el.row === j && el.column === i) {
-          items[i].push(<Seat taken col={i} row={j} />);
-          taken = true;
-        }
-      });
-  
-      if (taken === false) {
-        items[i].push(<Seat col={i} row={j} />);
-      }
+      items[col - 1].push(<Seat col={col} row={row} />);
+      // takenSeats.forEach((el) => {
+      //   if (el.row === j && el.column === i) {
+      //     items[i].push(<Seat taken col={i} row={j} />);
+      //     taken = true;
+      //   }
+      // });
+
+      // if (taken === false) {
+      //   items[i].push(<Seat col={i} row={j} />);
+      // }
     }
   }
-  takenSeats = []
-}
-const data = createContext()
-
+  takenSeats = [];
+};
+const data = createContext();
 
 function SeatReservation() {
-  const { showingId } = useParams()
+  const { showingId } = useParams();
+  const [reservations, setReservations] = useState([]);
+  const [showing, setShowing] = useState([]);
+
+  const db = getFirestore(firebase);
+
+  const getShowing = async () => {
+    const docRef = doc(db, "showings", showingId);
+    const docSnap = await getDoc(docRef);
+    console.log(`t1: ${docSnap.id}`);
+    console.log(docSnap.data());
+
+    setShowing({ ...docSnap.data(), id: docSnap.id });
+
+    const reservationIds = docSnap.data().reservationIds;
+    getReservations(reservationIds);
+  };
+
+  const getReservations = async (reservationIds) => {
+    const reservationsRef = collection(db, "reservations");
+    const idsAsStrings = reservationIds.map(function (e) {
+      return e.toString();
+    });
+
+    const q = query(reservationsRef, where("__name__", "in", idsAsStrings));
+    const querySnapshot = await getDocs(q);
+    const firebaseReservations = [];
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+      firebaseReservations.push({ ...doc.data(), id: doc.id });
+    });
+    setReservations(firebaseReservations);
+  };
+
   const [coords, setCoords] = useState();
-    useEffect(() => {
-      prepareSeats(showingId)
-    }, [showingId])
+  useEffect(() => {
+    prepareSeats(showingId);
+  }, [showingId]);
+
+  useEffect(() => {
+    getShowing();
+  }, []);
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = { coords, setCoords };
 
   return (
     <div className="App">
       <div className="movie-seats">
-        <h2>Seans {showingId}</h2>
+        <h2>T: {showing.reservationIds}</h2>
+        <h2>Film Showing {showingId}</h2>
         <data.Provider value={value}>
           <div className="seats">{items}</div>
         </data.Provider>
-        { coords ? null : <h2>Wybierz miejsce</h2>}
-        { coords && <div>
-          <button className="reservationButton" type="button">Zarezerwuj</button>
-        </div> }
+        {coords ? null : <h2>Click to book a seat</h2>}
+        {coords && (
+          <div>
+            <button className="reservationButton" type="button">
+              Book - column: {coords.col} row: {coords.row}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
