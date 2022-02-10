@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 // eslint-disable-next-line import/no-cycle
-import { data } from "../SeatReservation";
+import { ReservationContext } from "../SeatReservation";
 
 // eslint-disable-next-line react/prop-types
 export default function Seat({ row, col, taken }) {
   // const [coords, setCoords] = useState();
   // console.log(typeof taken);
-  const { coords, setCoords } = useContext(data);
+  const { coords, setCoords } = useContext(ReservationContext);
   let chosen = false;
   if (coords && coords.row === row && coords.col === col) {
     chosen = true;
@@ -20,7 +20,6 @@ export default function Seat({ row, col, taken }) {
       type="button"
       onClick={() => {
         if (taken === false) {
-          console.log("click");
           setCoords({ col, row });
         }
       }}
